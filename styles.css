@@ -1,0 +1,203 @@
+/* Сброс и базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* важно для flex-контейнера */
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  display: flex;
+  flex-direction: column; /* верт. расположение */
+}
+
+/* Контентная часть */
+main {
+  flex: 1; /* занимает всё доступное пространство */
+  padding: 20px;
+}
+
+/* Футер */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+}
+
+/* Контейнер */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Шапка */
+header {
+  background-color: #ffcc00; /* желтая шапка */
+  padding: 15px 20px;
+  text-align: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+nav a:hover {
+  background-color: #ffd633;
+}
+
+/* Герой секция */
+.hero {
+  background-color: #ff9999; /* светло-красный фон */
+  text-align: center;
+  padding: 50px 20px;
+  color: white;
+}
+
+/* Кнопки */
+button, .btn {
+  background-color: #0099ff; /* синий */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover, .btn:hover {
+  background-color: #007acc;
+}
+
+/* Секции */
+section {
+  background-color: #ffffff; /* белый фон */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Подвал */
+footer {
+  background-color: #333333; /* темно-серый */
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  margin-top: 30px;
+}
+
+/* Хлебные крошки */
+.breadcrumbs, nav[aria-label="Хлебные крошки"] {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.breadcrumbs a, nav[aria-label="Хлебные крошки"] a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover, nav[aria-label="Хлебные крошки"] a:hover {
+  text-decoration: underline;
+}
+
+/* Модальное окно */
+dialog {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  
+  /* Центрирование */
+  position: fixed;       /* фиксированное положение относительно экрана */
+  top: 50%;              /* вертикально по центру */
+  left: 50%;             /* горизонтально по центру */
+  transform: translate(-50%, -50%); /* смещаем на половину размера модалки */
+  width: 90%;
+  max-width: 500px;
+}
+
+/* Фон под модалкой */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Форма */
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("minions.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 50px 20px;
+  color: white;
+}
+
+/* Формы: размеры, отступы, визуальный порядок */
+label { display: block; margin: 0.5rem 0 0.25rem; }
+input, select, textarea, button {
+ width: 100%;
+ max-width: 480px;
+ padding: .5rem .75rem;
+ border: 1px solid #c8c8c8;
+ border-radius: 8px;
+ background: #fff;
+}
+/* Кнопка по умолчанию */
+button, [type="submit"] {
+ background: #0a84ff;
+ color: #fff;
+ border: none;
+ cursor: pointer;
+}
+/* Состояния: клавиатура/мышь/ошибки */
+:where(input, select, textarea, button):focus-visible {
+ outline: 2px solid #0a84ff; outline-offset: 2px;
+}
+button:hover { filter: brightness(0.95); }
+:disabled, [aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
+/* Подсветка ошибочных полей (установите aria-invalid="true") */
+[aria-invalid="true"] { border-color: #b00020; }
+
+
+.media {
+  width: 100%;
+  max-width: 900px; /* максимум по ширине */
+  margin: 0 auto;
+}
+
+.media iframe {
+  width: 100%;
+  height: 500px; /* фиксированная высота */
+  border: none;
+  border-radius: 5px;
+}
