@@ -1,54 +1,124 @@
- <!DOCTYPE html> 
-<html lang="ru"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Главная - Название вашего сайта</title> 
-    <meta name="description" content="Краткое описание главной страницы вашего сайта"> 
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> 
-    <meta property="og:type" content="website"> 
-    <meta property="og:title" content="Заголовок страницы"> 
-    <meta property="og:description" content="Описание страницы"> 
-    <meta property="og:image" content="https://.../link-to-image.jpg"> 
-</head> 
-<body> 
-    <!-- Шапка сайта --> 
-    <header> 
-        <a href="/">Логотип или название сайта</a> 
-        <!-- Главное меню навигации --> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Главная</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contacts.html">Контакты</a></li> 
-            </ul> 
-        </nav> 
-    </header> 
-    <!-- Уникальное основное содержимое страницы --> 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Название вашего сайта</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="site-header">
+        <div class="container">
+            <a class="site-header__brand" href="index.html">Логотип или название сайта</a>
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html">Главная</a></li>
+                    <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+                    <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <main>
-        <h1>Добро пожаловать на наш сайт!</h1> 
-        <!-- Секция 1 с якорем --> 
-        <section id="services"> 
-            <h2>Наши услуги</h2> 
-            <p>Описание предоставляемых услуг...</p> 
-            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы --> 
-        </section> 
-        <!-- Секция 2 с якорем --> 
-        <section id="portfolio"> 
-            <h2>Портфолио</h2> 
-            <p>Примеры наших работ...</p> 
-        </section> 
-        <!-- Секция 3 с якорем --> 
-        <section id="contacts"> 
-            <h2>Контактная информация</h2> 
-            <p>Наши контакты...</p> 
-    </main> 
-            <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу --> 
-        </section> 
-    <!-- Подвал сайта --> 
-    <footer> 
-        <p>&copy; 2023 Название вашего сайта. Все права защищены.</p> 
-        <p>Телефон: +7 (123) 456-78-90</p> 
-    </footer> 
-</body> 
-</html> 
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs container" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+        </nav>
+
+        <!-- Герой-секция с фоном -->
+        <section class="hero">
+            <div class="container hero__content">
+                <h1 class="hero__title">Добро пожаловать на наш сайт!</h1>
+                <p class="hero__subtitle">Мы делаем ваши проекты ярче!</p>
+                <button id="openDialog" type="button" class="btn btn--primary">Написать нам</button>
+            </div>
+        </section>
+
+        <!-- Контент -->
+        <div class="container">
+            <section id="services" class="section">
+                <h2 class="section__title">Наши услуги</h2>
+                <p>Описание предоставляемых услуг...</p>
+                <!-- responsive картинка -->
+                <img src="man.jpg" alt="Пример услуги" width="640" height="360" loading="lazy" class="section__image">
+            </section>
+
+            <!-- Видео -->
+            <section class="section">
+                <h2 class="section__title">Видео о нас</h2>
+                <div class="media">
+                    <iframe src="https://rutube.ru/play/embed/f5307dfbc062b1475c147901e9054b48/"
+                            title="Видео о проекте"
+                            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Модальное окно с формой -->
+    <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
+        <div class="modal__content">
+            <h2 id="dialogTitle" class="modal__title">Обратная связь</h2>
+            <form id="contactForm" class="form" method="dialog" novalidate>
+                <div class="form__field">
+                    <label class="form__label" for="name">Имя</label>
+                    <input class="form__input" id="name" name="name" type="text" required minlength="2">
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="email">E-mail</label>
+                    <input class="form__input" id="email" name="email" type="email" required>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="phone">Телефон</label>
+                    <input class="form__input" id="phone" name="phone" type="tel" required
+                        placeholder="+7 (___) ___-__-__"
+                        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                        aria-describedby="phoneHelp">
+                    <small id="phoneHelp" class="form__help">Формат: +7 (900) 000-00-00</small>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="date">Дата</label>
+                    <input class="form__input" id="date" name="date" type="date" required>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="topic">Тема</label>
+                    <select class="form__input" id="topic" name="topic" required>
+                        <option value="">Выберите тему</option>
+                        <option>Вопрос</option>
+                        <option>Заказ</option>
+                    </select>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="message">Сообщение</label>
+                    <textarea class="form__input" id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <div class="form__actions">
+                    <button type="button" id="closeDialog" class="btn btn--secondary">Закрыть</button>
+                    <button type="submit" class="btn btn--primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Подвал -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+            <p>Телефон: +7 (123) 456-78-90</p>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+
+</body>
+</html>
